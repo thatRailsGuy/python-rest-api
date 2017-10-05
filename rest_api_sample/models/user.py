@@ -1,4 +1,5 @@
 from rest_api_sample.utils.database import *
+from passlib.apps import custom_app_context as pwd_context
 import json
 
 class User(object):
@@ -14,11 +15,14 @@ class User(object):
         additional_info: extra information provided by user during setup """
 
     def encrypted_password(password):
-        return password
+        return pwd_context.encrypt(password)
+
+    def verify_password(id, password):
+        hash = User.find(id)
+        return pwd_context.verify(password, hash)
 
     def __init__(self, username, password, email, phone, address, additional_info, is_admin):
         self.username = username
-        print(password)
         self.password = User.encrypted_password(password)
         self.email = email
         self.phone = phone

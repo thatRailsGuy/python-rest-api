@@ -106,3 +106,4 @@ venv.bak/
 rest_api_sample/__pycache__/
 .venv/
 rest_api.sqlite
+dump.rdb
