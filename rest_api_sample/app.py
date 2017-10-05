@@ -1,6 +1,6 @@
 import falcon
 
-from .users import Resource
+from rest_api_sample.controllers.users import Resource
 
 api = application = falcon.API()
 
